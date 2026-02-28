@@ -1,0 +1,15 @@
+# env
+.env.local
+.env.*.local
+
+# deps
+node_modules/
+.pnpm-store/
+
+# build outputs
+dist/
+.next/
+
+# supabase local
+supabase/.branches/
+supabase/.temp/
