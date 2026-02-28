@@ -1,0 +1,14 @@
+{
+  "name": "keep-up",
+  "private": true,
+  "version": "0.0.1",
+  "packageManager": "pnpm@10.30.3",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "pnpm -r dev",
+    "build": "pnpm -r build"
+  }
+}
