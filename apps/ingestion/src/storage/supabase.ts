@@ -60,6 +60,40 @@ export async function getUserPhone(userId: string): Promise<string | null> {
   return (data as { phone_number?: string | null } | null)?.phone_number ?? null
 }
 
+export async function getConnectionByEmail(
+  emailAddress: string
+): Promise<{ user_id: string; last_history_id: string | null } | null> {
+  const { data } = await supabase
+    .from('gmail_connections')
+    .select('user_id, last_history_id')
+    .eq('email_address', emailAddress)
+    .eq('status', 'connected')
+    .maybeSingle()
+  return data as { user_id: string; last_history_id: string | null } | null
+}
+
+export async function updateLastHistoryId(userId: string, historyId: string): Promise<void> {
+  await supabase
+    .from('gmail_connections')
+    .update({ last_history_id: historyId, updated_at: new Date().toISOString() })
+    .eq('user_id', userId)
+}
+
+export async function updateWatch(
+  userId: string,
+  historyId: string,
+  expiration: string
+): Promise<void> {
+  await supabase
+    .from('gmail_connections')
+    .update({
+      last_history_id: historyId,
+      watch_expiration: new Date(parseInt(expiration)).toISOString(),
+      updated_at: new Date().toISOString(),
+    })
+    .eq('user_id', userId)
+}
+
 export async function insertClassification(params: {
   message_id: string
   user_id: string
