@@ -21,7 +21,7 @@ export default async function SettingsPage() {
       <section className="rounded-lg border border-gray-200 p-6 space-y-4">
         <h2 className="text-lg font-semibold">Gmail Connection</h2>
 
-        {connection ? (
+        {connection?.status === 'connected' ? (
           <div className="space-y-2">
             <div className="flex items-center gap-2">
               <StatusDot status={connection.status} />
