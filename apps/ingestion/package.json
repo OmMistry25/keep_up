@@ -10,7 +10,8 @@
   "dependencies": {
     "@supabase/supabase-js": "^2.98.0",
     "dotenv": "^17.3.1",
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "openai": "^6.25.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.21",

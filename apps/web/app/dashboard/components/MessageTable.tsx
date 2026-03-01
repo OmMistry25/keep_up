@@ -32,7 +32,7 @@ export default function MessageTable({ rows }: { rows: MessageRow[] }) {
         <tbody className="divide-y divide-gray-100 bg-white">
           {rows.map((row) => (
             <tr key={row.id} className="hover:bg-gray-50">
-              <td className="px-4 py-3 font-medium">{row.from_name ?? row.from_email ?? '—'}</td>
+              <td className="px-4 py-3 font-medium">{row.from_name || row.from_email || '—'}</td>
               <td className="px-4 py-3 text-gray-700 max-w-sm truncate">{row.subject ?? '—'}</td>
               <td className="px-4 py-3">
                 <span className={`inline-block rounded-full px-2 py-0.5 text-xs font-semibold ${labelClass(row.label)}`}>

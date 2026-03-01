@@ -64,6 +64,22 @@ export default async function SettingsPage() {
           </div>
         )}
       </section>
+
+      {/* Notifications */}
+      <section className="rounded-lg border border-gray-200 p-6 space-y-4">
+        <h2 className="text-lg font-semibold">Notifications</h2>
+        <p className="text-sm text-gray-500">
+          Get notified when job-related emails are detected. Join the Discord server to receive updates.
+        </p>
+        <a
+          href="https://discord.gg/sjCwGKwpYQ"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 rounded-lg bg-[#5865F2] px-4 py-2 text-sm font-medium text-white hover:bg-[#4752C4]"
+        >
+          Join Discord Server
+        </a>
+      </section>
     </main>
   )
 }

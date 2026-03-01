@@ -13,4 +13,7 @@ export const env = {
   ENCRYPTION_KEY: require('ENCRYPTION_KEY'),
   PUBSUB_VERIFICATION_TOKEN: process.env.PUBSUB_VERIFICATION_TOKEN ?? '',
   INGESTION_SHARED_SECRET: require('INGESTION_SHARED_SECRET'),
+  OPENAI_API_KEY: process.env.OPENAI_API_KEY ?? '',
+  LLM_ENABLED: process.env.LLM_ENABLED === 'true',
+  ZAPIER_WEBHOOK_URL: process.env.ZAPIER_WEBHOOK_URL ?? '',
 }

@@ -18,8 +18,8 @@ export async function listMessageIds(
   maxResults = 20
 ): Promise<string[]> {
   const params = new URLSearchParams({
-    labelIds: 'INBOX',
     maxResults: String(maxResults),
+    labelIds: 'INBOX',   // only received emails — excludes Sent, Drafts, Spam
   })
   const res = await fetch(`${GMAIL_BASE}/messages?${params}`, { headers: headers(accessToken) })
   if (!res.ok) throw new Error(`listMessages failed: ${res.status}`)
@@ -31,10 +31,8 @@ export async function getMessage(
   accessToken: string,
   messageId: string
 ): Promise<GmailMessage> {
-  const params = new URLSearchParams({
-    format: 'metadata',
-    metadataHeaders: ['From', 'Subject', 'Date'].join(','),
-  })
+  // format=full returns the complete payload including body parts
+  const params = new URLSearchParams({ format: 'full' })
   const res = await fetch(`${GMAIL_BASE}/messages/${messageId}?${params}`, {
     headers: headers(accessToken),
   })
@@ -42,11 +40,18 @@ export async function getMessage(
   return res.json()
 }
 
+export type GmailMessagePart = {
+  mimeType: string
+  headers?: { name: string; value: string }[]
+  body?: { data?: string; size?: number }
+  parts?: GmailMessagePart[]
+}
+
 export type GmailMessage = {
   id: string
   threadId: string
   snippet: string
-  payload: {
+  payload: GmailMessagePart & {
     headers: { name: string; value: string }[]
   }
   internalDate: string

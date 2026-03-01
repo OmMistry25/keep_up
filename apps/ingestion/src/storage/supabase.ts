@@ -51,6 +51,15 @@ export async function upsertMessage(
   return data.id as string
 }
 
+export async function getUserPhone(userId: string): Promise<string | null> {
+  const { data } = await supabase
+    .from('profiles')
+    .select('phone_number')
+    .eq('id', userId)
+    .single()
+  return (data as { phone_number?: string | null } | null)?.phone_number ?? null
+}
+
 export async function insertClassification(params: {
   message_id: string
   user_id: string
