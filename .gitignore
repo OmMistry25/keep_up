@@ -6,6 +6,7 @@ apps/ingestion/.env
 
 # deps
 node_modules/
+**/node_modules/
 .pnpm-store/
 
 # build outputs
