@@ -2,6 +2,7 @@
 .env.local
 .env.*.local
 apps/**/.env.local
+apps/ingestion/.env
 
 # deps
 node_modules/
