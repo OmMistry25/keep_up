@@ -1,0 +1,9 @@
+node_modules
+.next
+dist
+.git
+*.log
+apps/ingestion/.env
+apps/web/.env.local
+.env.local
+.env.*.local

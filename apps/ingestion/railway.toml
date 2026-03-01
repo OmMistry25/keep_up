@@ -1,0 +1,5 @@
+[build]
+buildCommand = "pnpm --filter ingestion build"
+
+[deploy]
+startCommand = "pnpm --filter ingestion start"
