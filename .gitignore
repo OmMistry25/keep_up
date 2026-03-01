@@ -1,6 +1,7 @@
 # env
 .env.local
 .env.*.local
+apps/**/.env.local
 
 # deps
 node_modules/
